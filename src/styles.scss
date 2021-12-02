@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+:root{
+  --black: #020203;
+  --white: #fff;
+  --prime: #0f1321;
+  --second: #171d33;
+  --third: #1f2744;
+  --shine: #273156;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  outline: 0;
+}
+a{
+  text-decoration: none;
+  color: var(--prime);
+  font-weight: bold;
+}
+img{
+  max-width: 100%;
+}
+
+$white: #ffffff;
+$black: #000000;
+$yellow: #f6c700;
+
+
+html{
+  font-size: 15px;
+}
+
+html, body{
+  width: 100vw;
+  font-family: 'Futura Bt Book', sans-serif;
+  width: 100vw;
+  height: auto;
+  background-color: var(--prime);
+  color: var(--white);
+
+}
+
+body{
+  background-color: $white;
+  color: $black;
+  font-size: 1.6rem;
+}
+
+h1{
+  color: $yellow;
+  font-size: 3rem;
+}
+
+
+header.main--header nav.main--nav{
+  width: 150px;
+  height: 100vh;
+  background: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+
+
+.main{
+  width: calc(100vw - 150px);
+}
