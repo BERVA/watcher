@@ -14,6 +14,13 @@ import * as fromApp from './store/app.reducer'
 import { EffectsModule } from '@ngrx/effects';
 import { MoviesEffects } from './movies/store/movies.effects';
 import { CommonModule } from '@angular/common';
+import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import { CustomSerializer } from './store/router/custom-serializer';
+import { DetailComponent } from './shared/detail/detail.component';
+import { SeriesComponent } from './series/series/series.component';
+import { MovieDetailEffects } from './movies/movie-detail/store/movie-detail.effects';
 
 
 @NgModule({
@@ -24,14 +31,20 @@ import { CommonModule } from '@angular/common';
     MoviesComponent,
     MovieComponent,
     MoviesListComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    DetailComponent,
+    SeriesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([MoviesEffects]),
+    EffectsModule.forRoot([MoviesEffects, MovieDetailEffects]),
+    StoreRouterConnectingModule.forRoot({
+      serializer: CustomSerializer
+    }),
+    StoreDevtoolsModule.instrument({logOnly: environment.production}),
     CommonModule
   ],
   providers: [],

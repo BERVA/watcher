@@ -25,10 +25,9 @@ export class MoviesListComponent implements OnInit, OnDestroy {
     this.subs = this.store.select('movies').pipe(
       map(movieState => movieState.movies)
     ).subscribe( (movies: Movie[]) => {
-
       this.movies = movies;
-
     });
+
   }
 
   ngOnDestroy(){

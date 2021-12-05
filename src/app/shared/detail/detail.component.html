@@ -1,0 +1,22 @@
+<div class="detail">
+  <div class="detail--header" style="background-image: url(https://image.tmdb.org/t/p/original/{{figure.backdrop_path}});">
+  <div class="detail--header--overlay"></div>
+  </div>
+
+  <div class="detail--body">
+    <div class="detail--body--poster">
+      <img src="https://image.tmdb.org/t/p/w500/{{figure.poster_path}}" alt="">
+    </div>
+    <div class="detail--body--info">
+      <h3>{{figure.title}}</h3>
+      <h4> {{figure.release_date}}</h4>
+      <div class="detail--body--info--genres">
+        <span *ngFor="let genre of figure.genres"> {{ genre.name }} </span>
+      </div>
+
+    </div>
+    <div class="detail--body--media">
+      <h3>Media</h3>
+    </div>
+  </div>
+</div>

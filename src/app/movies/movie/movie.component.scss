@@ -1,3 +1,20 @@
 img{
-  max-width: 100%;
+  width: 100%;
+}
+
+.movie{
+  display: block;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+  4px 4px 6px 0 rgb(165 160 160 / 78%), 8px 8px 7px 0px rgb(227 222 222 / 89%);
+  &--poster{
+    width: 100%;
+    display: flex;
+  }
+  &--title{
+    position: absolute;
+    display: none;
+  }
 }

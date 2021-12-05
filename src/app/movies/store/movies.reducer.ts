@@ -17,7 +17,6 @@ export const moviesReducer = createReducer(
       ...state,
       movies: action.movies
     }
-  }
-  )
+  })
 
 );

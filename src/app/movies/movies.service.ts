@@ -14,12 +14,13 @@ export class MoviesService{
     private http: HttpClient,
     private anahtar: Anahtar
   ){}
-  req: string = this.anahtar.request;
+
+  getPopularMoviesreq: string = this.anahtar.popularMoviesRequest;
+  apiKey = this.anahtar.apiKey;
 
   getPopular(){
-    return this.http.get<ApiResponse>(this.req).pipe(
+    return this.http.get<ApiResponse>(this.getPopularMoviesreq).pipe(
       map(data => {
-
         return data.results
       })
     )
