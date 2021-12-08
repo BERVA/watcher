@@ -1,5 +1,7 @@
 
-<app-header></app-header>
+<app-header (menuOpener)="toggleMenu()"></app-header>
+<div class="menu--overlay" [ngClass]="(isMenuOpen | async) ? 'open' : 'close'" (click)="toggleMenu()">
+</div>
 <div class="main">
   <router-outlet></router-outlet>
 </div>

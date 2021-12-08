@@ -41,11 +41,13 @@ html, body{
   height: auto;
   background-color: var(--prime);
   color: var(--white);
+  left: 0;
+  top: 0;
 
 }
 
 body{
-  background-color: $white;
+  background-color: var(--prime);
   color: $black;
   font-size: 1.6rem;
 }
@@ -56,20 +58,233 @@ h1{
 }
 
 
-header.main--header nav.main--nav{
-  width: 150px;
-  height: 100vh;
+header{
   background: $white;
+  z-index: 999;
+}
+
+
+
+header.top--header{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 60px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+header.top--header nav.top--nav{
+  display: flex;
+  width: 100%;
+  height: 60px;
   justify-content: center;
   align-items: center;
+}
+header.top--header nav.top--nav ul.top--nav--list{
+  display: flex;
+  width: 100%;
+  height: 60px;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2rem;
+  font-size: 1rem;
+}
+
+ul.top--nav--list li a.btn{
+  display: flex;
+  height: 40px;
+  padding: 1rem;
+  line-height: 40px;
+  justify-content: center;
+  align-items: center;
+  // border: 1px solid #e90407;
+  border-radius: 6px;
+  background-color: #e90407;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}
+ul.top--nav--list li a.btn.outline{
+  // border: 1px solid #e90407;
+  background-color: #fff;
+  color: #e90407;
+  margin-right: 1rem;
+}
+
+.logo{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+  color: #e90407;
+}
+.logo a{
+  color: #e90407;
+  font-size: 1.6rem;
+}
+
+.menu--opener{
+  margin-left: 3rem;
+  position: relative;
+  display: flex;
+  height: 20px;
+  width: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu--opener--btn{
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.inner{
+  position: absolute;
+  display: flex;
+  width: 20px;
+  height: 1px;
+  background-color: #282f2f;
+  content: '';
+  top: 0;
+  left: 0;
+  &::after{
+    @extend .inner;
+    top: 5px;
+  }
+  &::before{
+    @extend .inner;
+    top: 10px;
+  }
+}
+
+
+header.main--header{
   position: fixed;
-  text-align: center;
-  border-right: 1px solid #ddd;
+  left: 0;
+  top: 60px;
+  width: 250px;
+  height: calc(100vh - 60px);
+  transform: translateX(-250px);
+  padding: 2rem 1rem;
+}
+
+
+
+header.main--header nav.main--nav{
+  width: 250px;
+  height: calc(100vh - 60px);
+  display: flex;
+  align-items: flex-start;
+  position: fixed;
+  text-align: left;
+  overflow: hidden;
 }
 
 
 .main{
-  width: calc(100vw - 150px);
-  margin-left: 150px;
+  //width: calc(100vw - 48px);
+  width: 100vw;
+  //margin: 40px 0 0 48px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header.main--header{
+  transition: transform .3s ease-in-out;
+}
+
+header.main--header.open{
+  transform: translateX(0);
+}
+
+.main.open{
+  transform: translateX(200px);
+}
+
+@keyframes opac {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes revopac {
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+.menu--overlay{
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .7);
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  overflow: hidden;
+  z-index: 1;
+  animation: revopac .3s ease-in-out forwards;
+}
+
+
+
+.menu--overlay.open{
+  display: block;
+  animation: opac .3s ease-in-out forwards;
+
+}
+
+
+
+
+
+
+
+
+/* ==== Figure List =====*/
+
+.figure--list{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2rem;
+}
+
+
+.figure{
+  display: block;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 4px 4px 6px 0 rgb(165 160 160 / 78%),
+  8px 8px 7px 0px rgb(227 222 222 / 89%);
+  &--poster{
+    width: 100%;
+    display: flex;
+  }
+  &--title{
+    position: absolute;
+    display: none;
+  }
 }

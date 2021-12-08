@@ -1,11 +1,7 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { Store } from "@ngrx/store";
 import { filter, map, switchMap } from "rxjs";
-import { MoviesService } from "../../movies.service";
 import * as MovieDetailActions from "./movie-detail.actions";
-import * as fromApp from '../../../store/app.reducer';
 import { DataService } from "src/app/shared/data.service";
 import { RouterNavigationAction, ROUTER_NAVIGATION } from "@ngrx/router-store";
 
@@ -32,9 +28,6 @@ export class MovieDetailEffects{
   ))
   constructor(
     private actions$: Actions,
-    private http: HttpClient,
-    private moviesService: MoviesService,
-    private store: Store<fromApp.AppState>,
     private dataService: DataService
   ){}
 }

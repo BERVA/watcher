@@ -1,20 +1,30 @@
 
-<header class="main--header">
+<header class="main--header" [ngClass]="(isOpen | async) ? 'open' : 'close'" (click)="menuOpen()">
   <nav class="main--nav">
     <ol>
-      <li><a routerLink="/" routerLinkActive="router-link-active" >Watcher</a></li>
       <li>
-        <a routerLink="/movies" routerLinkActive="router-link-active" >Movies</a>
+        <a routerLink="/movies" routerLinkActive="router-link-active"> Movies </a>
       </li>
       <li>
-        <a routerLink="/series" routerLinkActive="router-link-active" >Series</a>
+        <a routerLink="/series" routerLinkActive="router-link-active"> Series </a>
       </li>
       <li>
-        <a routerLink="/animations" routerLinkActive="router-link-active" >Animations</a>
-      </li>
-      <li>
-        <a href="">Login</a>
+        <a routerLink="/animations" routerLinkActive="router-link-active"> Animations </a>
       </li>
     </ol>
+  </nav>
+</header>
+<header class="top--header">
+  <nav class="top--nav">
+    <div class="menu--opener">
+      <a class="menu--opener--btn" (click)="menuOpen()">
+        <span class="inner"></span>
+      </a>
+    </div>
+    <div class="logo"><a routerLink="/" routerLinkActive="router-link-active">Watcher</a></div>
+    <ul class="top--nav--list">
+      <li><a routerLink="/auth"class="btn outline">Berva</a></li>
+      <li><a routerLink="/auth" class="btn">Sign In</a></li>
+    </ul>
   </nav>
 </header>
