@@ -47,7 +47,7 @@ html, body{
 }
 
 body{
-  background-color: var(--prime);
+  background-color: var(--white);
   color: $black;
   font-size: 1.6rem;
 }
@@ -264,6 +264,10 @@ header.main--header.open{
 
 
 /* ==== Figure List =====*/
+
+.detail{
+  background-color: var(--prime);
+}
 
 .figure--list{
   display: grid;

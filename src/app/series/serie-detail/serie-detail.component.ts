@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Serie } from '../serie.model';
+import * as fromApp from '../../store/app.reducer'
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-serie-detail',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SerieDetailComponent implements OnInit {
 
-  constructor() { }
+  serie!: Serie;
+
+  constructor(
+    private store: Store<fromApp.AppState>
+  ) { }
 
   ngOnInit(): void {
+
+    this.store.select('serie').pipe(
+      map(
+        seriesState => seriesState.serie
+      )
+    ).subscribe(
+      (serie: Serie) => {
+        this.serie = serie;
+      }
+    )
+
   }
 
 }

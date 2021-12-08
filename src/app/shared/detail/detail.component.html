@@ -8,8 +8,13 @@
       <img src="https://image.tmdb.org/t/p/w500/{{figure.poster_path}}" alt="">
     </div>
     <div class="detail--body--info">
-      <h3 class="detail--body--info--title">{{figure.title}}</h3>
-      <h4> {{figure.release_date}}</h4>
+      <h3 class="detail--body--info--title">
+        {{figure.title ? figure.title: figure.name }}
+
+      </h3>
+      <h4>
+        {{figure.release_date ? figure.release_date : figure.first_air_date}} {{figure.last_air_date ? '-'+figure.last_air_date : ''}}
+      </h4>
       <div class="detail--body--info--genres">
         <span *ngFor="let genre of figure.genres"> {{ genre.name }} </span>
       </div>

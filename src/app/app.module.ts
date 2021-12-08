@@ -26,6 +26,7 @@ import { SerieComponent } from './series/serie/serie.component';
 import { SerieDetailComponent } from './series/serie-detail/serie-detail.component';
 import { SeriesEffects } from './series/store/series.effects';
 import { FigureComponent } from './shared/figure/figure.component';
+import { SerieDetailEffects } from './series/serie-detail/store/serie-detail.effects';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { FigureComponent } from './shared/figure/figure.component';
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([MoviesEffects, MovieDetailEffects, SeriesEffects]),
+    EffectsModule.forRoot([MoviesEffects, MovieDetailEffects, SeriesEffects, SerieDetailEffects]),
     StoreRouterConnectingModule.forRoot({
       serializer: CustomSerializer
     }),

@@ -3,6 +3,7 @@ export interface Serie{
   backdrop_path?: string,
   id?: number,
   original_title?: string,
+  name?: string,
   overview?: string,
   poster_path?: string,
   title?: string,
