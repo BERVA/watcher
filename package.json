@@ -1,6 +1,9 @@
 {
   "name": "Watcher",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "assets": [
+    "src/assets"
+ ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -14,6 +14,7 @@ export interface AppState{
   routerState: fromRouter.RouterReducerState<customSerializer.RouterStateUrl>
   series: fromSeries.SeriesState;
   serie: fromSerieDetail.SerieDetailState;
+  credits: fromSerieDetail.SerieDetailState;
 
 }
 
@@ -22,7 +23,8 @@ export const appReducer: ActionReducerMap<AppState, any> = {
   movie: fromMovieDetail.movieDetailReducer,
   routerState: fromRouter.routerReducer,
   series: fromSeries.moviesReducer,
-  serie: fromSerieDetail.serieDetailReducer
+  serie: fromSerieDetail.serieDetailReducer,
+  credits: fromSerieDetail.serieDetailReducer
 }
 
 export const getRouterState = createFeatureSelector<fromRouter.RouterReducerState<customSerializer.RouterStateUrl>>('router')

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Serie } from '../serie.model';
+import { Cast, Credits, Crew, Serie } from '../serie.model';
 import * as fromApp from '../../store/app.reducer'
 import { map } from 'rxjs';
 
@@ -12,6 +12,9 @@ import { map } from 'rxjs';
 export class SerieDetailComponent implements OnInit {
 
   serie!: Serie;
+  credits!: Credits;
+  cast!: Cast[];
+  crew!: Crew[];
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -27,7 +30,25 @@ export class SerieDetailComponent implements OnInit {
       (serie: Serie) => {
         this.serie = serie;
       }
+    );
+
+    this.store.select('credits').pipe(
+      map(
+        serieState => serieState.credits
+      )
+    ).subscribe(
+      (credits: Credits) => {
+        this.credits = credits;
+        this.cast = (credits.cast) as Cast[];
+        this.crew = (credits.crew) as Crew[];
+
+        console.log(this.cast);
+
+      }
     )
+
+
+
 
   }
 

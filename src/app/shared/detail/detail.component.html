@@ -28,5 +28,27 @@
     <div class="detail--body--media">
       <h3>Media</h3>
     </div>
+
+    <div class="detail--body--trailer">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Pj0wz7zu3Ms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div class="detail--body--crew">
+      <h3>CAST</h3>
+      <div class="detail--body--crew--cast">
+        <div *ngFor="let cast of figureCast" class="detail--body--crew--cast--card">
+
+
+          <div *ngIf="cast.profile_path">
+            <img src="https://www.themoviedb.org/t/p/w276_and_h350_face/{{cast.profile_path}}" alt="">
+          </div>
+          <div *ngIf="!cast.profile_path">
+            <img src="/assets/img/default-avatar.png" alt="">
+          </div>
+          <h4>{{cast.name}}</h4>
+          <h5>{{cast.character}}</h5>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

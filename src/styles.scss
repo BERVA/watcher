@@ -292,3 +292,37 @@ header.main--header.open{
     display: none;
   }
 }
+
+
+.crew{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  width: 90vw;
+}
+
+
+.crew--cast{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+  color: #fff;
+}
+
+.crew--cast--card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h4{
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  h5{
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}

@@ -21,3 +21,32 @@ export interface ApiResponse{
  total_pages: number,
  total_results: number
 }
+
+export interface Cast{
+  adult?: boolean,
+  gender?: number,
+  id?: number,
+  known_for_department?: string,
+  name?: string,
+  original_name?: string,
+  character?: string,
+  order?: number,
+  credit_id?: string,
+  profile_path?: string
+
+
+}
+
+export interface Crew{
+
+}
+
+export interface Credits{
+
+  id?: number,
+  cast?: Cast,
+  crew?: Crew
+
+}
+
+

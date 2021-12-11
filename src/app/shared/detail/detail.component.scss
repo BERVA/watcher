@@ -40,7 +40,10 @@
     grid-template-rows: minmax(100px, auto);
     grid-template-areas:
     "Poster Info Info . . "
-    "Poster Info Info Media Media";
+    "Poster Info Info Media Media"
+    "Trailer Trailer Trailer Media Media"
+    "Trailer Trailer Trailer Media Media"
+    "Crew Crew Crew Crew Crew";
 
     &--poster{
       grid-area: Poster;
@@ -92,6 +95,36 @@
     &--media{
       grid-area: Media;
     }
+
+    &--trailer{
+      grid-area: Trailer;
+      aspect-ratio: 16/9;
+    }
+
+    &--crew{
+      grid-area: Crew;
+      &--cast{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-rows: 1fr;
+        grid-gap: 4rem;
+
+        h4{
+          font-size: 1.1rem;
+          font-weight: 400;
+        }
+        h5{
+          font-size: .9rem;
+          font-weight: 400;
+        }
+
+        div>img{
+          aspect-ratio: 0.79;
+
+        }
+      }
+    }
+
 
 
   }

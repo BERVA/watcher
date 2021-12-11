@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Cast, Credits } from 'src/app/series/serie.model';
 
 @Component({
   selector: 'app-detail',
@@ -9,6 +10,7 @@ import { Observable } from 'rxjs';
 export class DetailComponent implements OnInit {
 
   @Input() figure: Observable<any> | any;
+  @Input() figureCast!: Cast[];
 
   constructor() { }
 
