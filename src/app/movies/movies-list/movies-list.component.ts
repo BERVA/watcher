@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Movie } from '../movie.model';
 import * as fromApp from '../../store/app.reducer'
-import { map, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { GetPopularMovies } from '../store/movies.actions';
+import * as fromMoviesSelector from '../store/movies.selectors';
 
 @Component({
   selector: 'app-movies-list',
@@ -12,8 +13,7 @@ import { GetPopularMovies } from '../store/movies.actions';
 })
 export class MoviesListComponent implements OnInit, OnDestroy {
 
-  movies!: Movie[];
-  subs!: Subscription;
+  movies$: Observable<Movie[]>;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -22,16 +22,12 @@ export class MoviesListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.store.dispatch(GetPopularMovies())
-    this.subs = this.store.select('movies').pipe(
-      map(movieState => movieState.movies)
-    ).subscribe( (movies: Movie[]) => {
-      this.movies = movies;
-    });
-
+    this.movies$ = this.store.pipe(
+      select(fromMoviesSelector.getPopularMovies)
+    )
   }
 
   ngOnDestroy(){
-    this.subs.unsubscribe()
   }
 
 }

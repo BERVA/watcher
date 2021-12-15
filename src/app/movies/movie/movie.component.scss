@@ -1,0 +1,26 @@
+
+.figure{
+  position: relative;
+
+  &--poster{
+    cursor: pointer;
+  }
+}
+
+.add--list--btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  min-height: 48px;
+  min-width: 48px;
+  border: 0;
+  padding: .5rem;
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.figure:hover .add--list--btn{
+  display: block;
+}

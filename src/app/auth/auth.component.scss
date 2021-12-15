@@ -77,6 +77,9 @@
       border: 1px solid #e90407;
       color: #fff;
       cursor: pointer;
+      &:disabled{
+        background: #f94f51;
+      }
     }
   }
 }

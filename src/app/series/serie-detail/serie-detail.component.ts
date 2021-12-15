@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Cast, Credits, Crew, Serie } from '../serie.model';
-import * as fromApp from '../../store/app.reducer'
-import { map } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { Cast, Credits, Serie } from '../serie.model';
+import * as fromApp from '../../store/app.reducer';
+import * as fromSerieDetailSelector from './store/serie-detail.selectors';
+import {Observable } from 'rxjs';
 
 @Component({
   selector: 'app-serie-detail',
@@ -10,45 +11,21 @@ import { map } from 'rxjs';
   styleUrls: ['./serie-detail.component.scss']
 })
 export class SerieDetailComponent implements OnInit {
-
-  serie!: Serie;
-  credits!: Credits;
-  cast!: Cast[];
-  crew!: Crew[];
+  serie$: Observable<Serie>;
+  credits$: Observable<Credits>;
+  cast$: Observable<Cast[]>;
 
   constructor(
     private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
-
-    this.store.select('serie').pipe(
-      map(
-        seriesState => seriesState.serie
-      )
-    ).subscribe(
-      (serie: Serie) => {
-        this.serie = serie;
-      }
-    );
-
-    this.store.select('credits').pipe(
-      map(
-        serieState => serieState.credits
-      )
-    ).subscribe(
-      (credits: Credits) => {
-        this.credits = credits;
-        this.cast = (credits.cast) as Cast[];
-        this.crew = (credits.crew) as Crew[];
-
-        console.log(this.cast);
-
-      }
+    this.serie$ = this.store.pipe(
+      select(fromSerieDetailSelector.getSerieDetail)
     )
-
-
-
+    this.cast$ = this.store.pipe(
+      select(fromSerieDetailSelector.getSerieCast)
+    )
 
   }
 

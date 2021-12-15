@@ -15,10 +15,8 @@ getPopularMovies$ = createEffect(
   () => this.actions$.pipe(
     ofType('[Movies] Get Popular Movies'),
     switchMap( action => {
-      console.log('hello from popular');
       return this.dataService.getPopular('movie').pipe(
         map((data) => {
-          console.log(data);
           return MoviesActions.GetPopularMoviesSuccess({movies: data})
         })
       )

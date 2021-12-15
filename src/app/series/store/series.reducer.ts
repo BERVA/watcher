@@ -5,13 +5,9 @@ import * as SeriesActions from './series.actions';
 export interface SeriesState{
   series: Serie[]
 }
-
 const seriesinitialState: SeriesState = {
   series: []
 }
-
-
-
 export const moviesReducer = createReducer(
   seriesinitialState,
   on(SeriesActions.GetPopularSeriesSuccess, (state, action) => {
@@ -20,5 +16,4 @@ export const moviesReducer = createReducer(
       series: action.series
     }
   })
-
 );
