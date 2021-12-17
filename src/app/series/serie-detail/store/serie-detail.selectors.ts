@@ -19,3 +19,13 @@ export const getSerieCast = createSelector(
   getSerieDetailState,
   (state: SerieDetailState) => state.credits.cast
 )
+
+export const getSerieMedia = createSelector(
+  getSerieDetailState,
+  (state: SerieDetailState) => state.media
+)
+
+export const getSerieMediaBackdrops = createSelector(
+  getSerieDetailState,
+  (state: SerieDetailState) => state.media.backdrops
+)

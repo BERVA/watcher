@@ -18,7 +18,6 @@ export interface AppState{
   routerState: fromRouter.RouterReducerState<customSerializer.RouterStateUrl>
   series: fromSeries.SeriesState;
   serie: fromSerieDetail.SerieDetailState;
-  credits: fromSerieDetail.SerieDetailState;
   auth: fromAuth.AuthState;
   [SHARED_STATE_NAME]: SharedState;
 
@@ -30,9 +29,8 @@ export const appReducer: ActionReducerMap<AppState, any> = {
   routerState: fromRouter.routerReducer,
   series: fromSeries.moviesReducer,
   serie: fromSerieDetail.serieDetailReducer,
-  credits: fromSerieDetail.serieDetailReducer,
   auth: fromAuth.authReducer,
   [SHARED_STATE_NAME]: SharedReducer
 }
 
-export const getRouterState = createFeatureSelector<fromRouter.RouterReducerState<customSerializer.RouterStateUrl>>('router')
+export const getRouterState = createFeatureSelector<fromRouter.RouterReducerState<customSerializer.RouterStateUrl>>('routerState')

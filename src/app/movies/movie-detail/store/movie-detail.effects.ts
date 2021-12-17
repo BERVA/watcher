@@ -7,6 +7,7 @@ import { RouterNavigationAction, ROUTER_NAVIGATION } from "@ngrx/router-store";
 import { Store } from "@ngrx/store";
 import { AppState } from "src/app/store/app.reducer";
 import { setLoadingSpinner } from "src/app/store/shared/shared.actions";
+import { Credits } from "src/app/series/serie.model";
 
 @Injectable()
 
@@ -31,6 +32,26 @@ export class MovieDetailEffects{
         }
       )
   ))
+
+  getMovieCredits$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(MovieDetailActions.GetMovieDetailSuccess),
+      switchMap(
+        (url: any) => {
+          const newReq = 'movie/' + url.movie.id;
+          return this.dataService.getCredits(newReq).pipe(
+            map( (data : Credits) => {
+              return MovieDetailActions.GetMovieCredits({credits: data})
+            })
+          )
+        }
+      )
+    )
+  )
+
+
+
+
   constructor(
     private actions$: Actions,
     private dataService: DataService,

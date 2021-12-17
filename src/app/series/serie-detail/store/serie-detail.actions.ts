@@ -4,6 +4,7 @@ import { Credits, Serie } from "../../serie.model";
 export const GET_SERIE_DETAIL = '[Serie Detail] Get Serie Detail';
 export const GET_SERIE_DETAIL_SUCCESS= '[Serie Detail] Get Serie Detail Success';
 export const GET_SERIE_CREDIT = '[Serie Detail] Get Serie Credit';
+export const GET_SERIE_MEDIA = '[Serie Detail] Get Serie Credit';
 
 
 export const GetSerieDetail = createAction(
@@ -18,4 +19,9 @@ export const GetSerieDetailSuccess = createAction(
 export const GetSerieCredit = createAction(
   GET_SERIE_CREDIT,
   props<{credits: Credits}>()
+)
+
+export const GetSerieMedia = createAction(
+  GET_SERIE_MEDIA,
+  props<{media: {}}>()
 )

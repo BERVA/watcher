@@ -283,13 +283,22 @@ header.main--header.open{
   overflow: hidden;
   box-shadow: 4px 4px 6px 0 rgb(165 160 160 / 78%),
   8px 8px 7px 0px rgb(227 222 222 / 89%);
+  transition: all .24s ease-in-out;
+  position: relative;
+  transition: all .24s ease-in-out;
   &--poster{
     width: 100%;
     display: flex;
+    cursor: pointer;
   }
   &--title{
     position: absolute;
     display: none;
+  }
+
+  &:hover,
+  &:focus{
+    transform: scale(1.1);
   }
 }
 

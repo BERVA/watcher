@@ -49,4 +49,12 @@ export interface Credits{
 
 }
 
+export interface Media{
+
+  backdrops?: [],
+  posters?:[],
+  logos?: []
+
+}
+
 

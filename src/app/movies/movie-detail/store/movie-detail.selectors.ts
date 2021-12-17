@@ -10,3 +10,14 @@ export const getMovieDetail = createSelector(
   getMovieDetailState,
   (state: MovieDetailState) => state.movie
 )
+
+export const getMovieCredits = createSelector(
+  getMovieDetailState,
+  (state: MovieDetailState) => state.credits
+)
+
+
+export const getMovieCast = createSelector(
+  getMovieDetailState,
+  (state: MovieDetailState) => state.credits.cast
+)

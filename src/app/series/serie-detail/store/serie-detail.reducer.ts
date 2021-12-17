@@ -1,14 +1,16 @@
 import { createReducer, on } from "@ngrx/store";
-import { Credits, Serie } from "../../serie.model";
+import { Credits, Media, Serie } from "../../serie.model";
 import * as SerieDetailAction from "./serie-detail.actions";
 
 export interface SerieDetailState{
   serie: Serie,
-  credits: Credits
+  credits: Credits,
+  media: Media
 }
 const initialState: SerieDetailState = {
   serie : {},
-  credits: {}
+  credits: {},
+  media: {}
 }
 export const serieDetailReducer = createReducer(
   initialState,
@@ -23,5 +25,12 @@ export const serieDetailReducer = createReducer(
       ...state,
       credits: action.credits
     }
-  })
+  }),
+  on(SerieDetailAction.GetSerieMedia, (state, action) => {
+    return{
+      ...state,
+      media: action.media
+    }
+  }
+  )
 );

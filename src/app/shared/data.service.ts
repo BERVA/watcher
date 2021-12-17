@@ -34,7 +34,7 @@ export class DataService{
   }
 
   getMedia(url: string){
-    return this.http.get<ApiResponse>(`https://api.themoviedb.org/3/${url}/images?api_key=${this.apiKey}&language=en-US&page=1`).pipe(
+    return this.http.get<ApiResponse>(`https://api.themoviedb.org/3/${url}/images?api_key=${this.apiKey}`).pipe(
       map(data => {
         return data
       })
