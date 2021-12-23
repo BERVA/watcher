@@ -14,7 +14,7 @@ export class DataService{
   apiKey = this.anahtar.apiKey;
 
   getData(url: any){
-    return this.http.get<Movie | Serie | any>(`https://api.themoviedb.org/3${url}?api_key=2d5a9ae4ac8bc294767ed0013f9c6c20&language=en-US'`)
+    return this.http.get<Movie | Serie | any>(`https://api.themoviedb.org/3${url}?api_key=0&language=en-US'`)
   }
 
   getPopular(url: string){
