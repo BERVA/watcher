@@ -1,36 +1,21 @@
 import { createReducer, on } from "@ngrx/store";
-import { Credits, Media, Serie } from "../../serie.model";
+import { AppendToResponseSerie } from "src/app/shared/shared.model";
 import * as SerieDetailAction from "./serie-detail.actions";
 
 export interface SerieDetailState{
-  serie: Serie,
-  credits: Credits,
-  media: Media
+  append: AppendToResponseSerie
 }
 const initialState: SerieDetailState = {
-  serie : {},
-  credits: {},
-  media: {}
+  append: {}
 }
 export const serieDetailReducer = createReducer(
   initialState,
-  on(SerieDetailAction.GetSerieDetailSuccess, (state, action) => {
-    return {
-      ...state,
-      serie: action.serie
+  on(
+    SerieDetailAction.GetSerieAllDetailSuccess, (state, action) => {
+      return {
+        ...state,
+        append: action.append
+      }
     }
-  }),
-  on(SerieDetailAction.GetSerieCredit, (state, action)=> {
-    return {
-      ...state,
-      credits: action.credits
-    }
-  }),
-  on(SerieDetailAction.GetSerieMedia, (state, action) => {
-    return{
-      ...state,
-      media: action.media
-    }
-  }
   )
 );

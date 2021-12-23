@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Cast, Credits, Serie } from '../serie.model';
+import { Backdrops, Cast, Credits, Media, Serie } from '../serie.model';
 import * as fromApp from '../../store/app.reducer';
 import * as fromSerieDetailSelector from './store/serie-detail.selectors';
-import {Observable } from 'rxjs';
+import {map, Observable } from 'rxjs';
+import { AppendToResponseSerie } from 'src/app/shared/shared.model';
 
 @Component({
   selector: 'app-serie-detail',
@@ -11,20 +12,14 @@ import {Observable } from 'rxjs';
   styleUrls: ['./serie-detail.component.scss']
 })
 export class SerieDetailComponent implements OnInit {
-  serie$: Observable<Serie>;
-  credits$: Observable<Credits>;
-  cast$: Observable<Cast[]>;
-
+  serie$: Observable<AppendToResponseSerie>;
   constructor(
     private store: Store<fromApp.AppState>
   ) { }
 
   ngOnInit(): void {
     this.serie$ = this.store.pipe(
-      select(fromSerieDetailSelector.getSerieDetail)
-    )
-    this.cast$ = this.store.pipe(
-      select(fromSerieDetailSelector.getSerieCast)
+      select(fromSerieDetailSelector.getSerieAllDetail)
     )
 
   }

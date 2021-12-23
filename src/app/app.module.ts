@@ -21,12 +21,22 @@ import { MoviesModule } from './movies/movies.module';
 import { SeriesModule } from './series/series.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
+import { PeopleComponent } from './people/people.component';
+import { PersonComponent } from './people/person/person.component';
+import { PersonDetailComponent } from './people/person-detail/person-detail.component';
+import { PeopleListComponent } from './people/people-list/people-list.component';
+import { PeopleEffects } from './people/store/people.effects';
+import { PersonDetailEffects } from './people/person-detail/store/person-detail.effects';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ProfileComponent,
+    PeopleComponent,
+    PersonComponent,
+    PersonDetailComponent,
+    PeopleListComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +47,7 @@ import { AuthModule } from './auth/auth.module';
     SeriesModule,
     SharedModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([MoviesEffects, MovieDetailEffects, SeriesEffects, SerieDetailEffects, AuthEffects]),
+    EffectsModule.forRoot([MoviesEffects, MovieDetailEffects, SeriesEffects, SerieDetailEffects, AuthEffects, PeopleEffects, PersonDetailEffects]),
     StoreRouterConnectingModule.forRoot({
       serializer: CustomSerializer
     }),

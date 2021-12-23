@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Cast, Credits } from 'src/app/series/serie.model';
+import { AppendToResponseMovie, AppendToResponseSerie } from '../shared.model';
 
 @Component({
   selector: 'app-detail',
@@ -9,12 +8,18 @@ import { Cast, Credits } from 'src/app/series/serie.model';
 })
 export class DetailComponent implements OnInit {
 
-  @Input() figure: Observable<any> | any;
-  @Input() figureCast!: Cast[];
+  @Input() figure: AppendToResponseSerie| AppendToResponseMovie;
+
+
+
 
   constructor() { }
 
   ngOnInit(): void {
+
+
+
   }
+
 
 }

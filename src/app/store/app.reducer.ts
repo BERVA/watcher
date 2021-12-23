@@ -8,6 +8,8 @@ import * as fromMovieDetail from '../movies/movie-detail/store/movie-detail.redu
 import * as fromSeries from '../series/store/series.reducer';
 import * as fromSerieDetail from '../series/serie-detail/store/serie-detail.reducer';
 import * as fromAuth from '../auth/store/auth.reducer';
+import * as fromPeople from "../people/store/people.reducer";
+import * as fromPersonDetail from "../people/person-detail/store/person-detail.reducer";
 import { SHARED_STATE_NAME } from './shared/shared.selector';
 import { SharedState } from './shared/shared.state';
 import { SharedReducer } from './shared/shared.reducer';
@@ -18,6 +20,8 @@ export interface AppState{
   routerState: fromRouter.RouterReducerState<customSerializer.RouterStateUrl>
   series: fromSeries.SeriesState;
   serie: fromSerieDetail.SerieDetailState;
+  people: fromPeople.PeopleState,
+  person: fromPersonDetail.PersonDetailState,
   auth: fromAuth.AuthState;
   [SHARED_STATE_NAME]: SharedState;
 
@@ -29,6 +33,8 @@ export const appReducer: ActionReducerMap<AppState, any> = {
   routerState: fromRouter.routerReducer,
   series: fromSeries.moviesReducer,
   serie: fromSerieDetail.serieDetailReducer,
+  people: fromPeople.peopleReducer,
+  person: fromPersonDetail.personDetailReducer,
   auth: fromAuth.authReducer,
   [SHARED_STATE_NAME]: SharedReducer
 }

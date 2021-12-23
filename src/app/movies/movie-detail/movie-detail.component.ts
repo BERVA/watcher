@@ -3,8 +3,7 @@ import { Store, select } from '@ngrx/store';
 import {  Observable } from 'rxjs';
 import * as fromApp from '../../store/app.reducer'
 import * as fromMovieDetailSelectors from "./store/movie-detail.selectors";
-import { Movie } from '../movie.model';
-import { Cast } from 'src/app/series/serie.model';
+import { AppendToResponseMovie } from 'src/app/shared/shared.model';
 
 @Component({
   selector: 'app-movie-detail',
@@ -12,9 +11,7 @@ import { Cast } from 'src/app/series/serie.model';
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit {
-  movie$: Observable<Movie>;
-  cast$: Observable<Cast[]>;
-
+  movie$: Observable<AppendToResponseMovie>;
 
   constructor(
     private store: Store<fromApp.AppState>
@@ -22,11 +19,7 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.movie$ = this.store.pipe(
-      select(fromMovieDetailSelectors.getMovieDetail)
-    )
-
-    this.cast$ = this.store.pipe(
-      select(fromMovieDetailSelectors.getMovieCast)
+      select(fromMovieDetailSelectors.getMovieAllDetail)
     )
   }
 

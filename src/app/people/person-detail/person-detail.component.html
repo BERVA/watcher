@@ -1,0 +1,24 @@
+<div class="person--detail">
+
+  <div class="person--detail--profile">
+    <h3>{{person.name}}</h3>
+    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/{{person.profile_path}}" alt="">
+    <div class="d">
+      <h5>Known For</h5>
+      <span class="person--detail--profile--job">{{person.known_for_department}} </span>
+    </div>
+    <div class="b">
+      <h5>Birth Day</h5>
+      <span> {{ person.birthday}}</span>
+    </div>
+  </div>
+
+  <div class="person--detail--biography">
+    <h4>Biography</h4>
+    <p>
+      {{person.biography}}
+    </p>
+  </div>
+
+
+</div>

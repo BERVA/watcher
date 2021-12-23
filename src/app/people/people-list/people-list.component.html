@@ -1,0 +1,4 @@
+<div class="figure--list people">
+  <div app-person *ngFor="let personEl of (people$ |async); let i = index" [person]="personEl">
+  </div>
+</div>

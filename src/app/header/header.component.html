@@ -1,7 +1,7 @@
 
-<header class="main--header" [ngClass]="(isOpen | async) ? 'open' : 'close'" (click)="menuOpen()">
-  <nav class="main--nav">
-    <ol>
+<header class="main--header" [ngClass]="(isOpen | async) ? 'open' : 'close'">
+  <nav class="main--nav" >
+    <ol (click)="menuOpen()">
       <li>
         <a routerLink="/movies" routerLinkActive="router-link-active"> Movies </a>
       </li>
@@ -9,9 +9,13 @@
         <a routerLink="/series" routerLinkActive="router-link-active"> Series </a>
       </li>
       <li>
-        <a routerLink="/people" routerLinkActive="router-link-active"> People </a>
+        <a routerLink="/person" routerLinkActive="router-link-active"> People </a>
       </li>
     </ol>
+    <div class="search">
+      <input type="search">
+      <button type="search">Search</button>
+    </div>
   </nav>
 </header>
 <header class="top--header">
@@ -26,7 +30,6 @@
       <li *ngIf="(isAuthenticated$ | async)"><a routerLink="/profile"class="btn outline">{{ userMail$ | async}}</a></li>
       <li *ngIf="(isAuthenticated$ | async)"><a routerLink="/auth" class="btn" (click)="onLogout()"> Logout</a></li>
       <li *ngIf="(!(isAuthenticated$ | async))"><a routerLink="/auth" class="btn">Sign In</a></li>
-
     </ul>
   </nav>
 </header>

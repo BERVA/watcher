@@ -1,27 +1,15 @@
 import { createAction, props } from "@ngrx/store";
-import { Credits, Serie } from "../../serie.model";
+import { AppendToResponseSerie } from "src/app/shared/shared.model";
 
-export const GET_SERIE_DETAIL = '[Serie Detail] Get Serie Detail';
-export const GET_SERIE_DETAIL_SUCCESS= '[Serie Detail] Get Serie Detail Success';
-export const GET_SERIE_CREDIT = '[Serie Detail] Get Serie Credit';
-export const GET_SERIE_MEDIA = '[Serie Detail] Get Serie Credit';
+export const GET_SERIE_ALL_DETAIL = '[Serie Detail] Get Serie All Detail';
+export const GET_SERIE_ALL_DETAIL_SUCCESS = '[Serie Detail] Get Serie All Detail Success';
 
 
-export const GetSerieDetail = createAction(
-  GET_SERIE_DETAIL
+export const GetSerieAllDetail = createAction(
+  GET_SERIE_ALL_DETAIL
 );
 
-export const GetSerieDetailSuccess = createAction(
-  GET_SERIE_DETAIL_SUCCESS,
-  props<{serie: Serie}>()
-)
-
-export const GetSerieCredit = createAction(
-  GET_SERIE_CREDIT,
-  props<{credits: Credits}>()
-)
-
-export const GetSerieMedia = createAction(
-  GET_SERIE_MEDIA,
-  props<{media: {}}>()
+export const GetSerieAllDetailSuccess = createAction(
+  GET_SERIE_ALL_DETAIL_SUCCESS,
+  props<{append: AppendToResponseSerie}>()
 )

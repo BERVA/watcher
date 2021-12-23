@@ -33,8 +33,6 @@ export interface Cast{
   order?: number,
   credit_id?: string,
   profile_path?: string
-
-
 }
 
 export interface Crew{
@@ -49,9 +47,13 @@ export interface Credits{
 
 }
 
-export interface Media{
+export interface Backdrops{
+  aspect_ratio: number,
+  file_path: string
+}
 
-  backdrops?: [],
+export interface Media{
+  backdrops?: Backdrops[],
   posters?:[],
   logos?: []
 

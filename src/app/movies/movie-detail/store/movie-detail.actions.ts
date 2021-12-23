@@ -1,22 +1,15 @@
 import { createAction, props } from "@ngrx/store";
-import { Credits } from "src/app/series/serie.model";
-import { Movie } from "../../movie.model";
+import { AppendToResponseMovie } from "src/app/shared/shared.model";
 
-export const GET_MOVIE_DETAIL = '[Movies Detail] Get Movies Detail';
-export const GET_MOVIE_DETAIL_SUCCESS= '[Movies Detail] Get Movie Detail Success';
-export const GET_MOVIE_CREDITS = '[Movie Detail] Get Movie Credits';
+export const GET_MOVIE_ALL_DETAIL = '[Movies Detail] Get Movie All Detail';
+export const GET_MOVIE_ALL_DETAIL_SUCCESS = '[Movies Detail] Get Movie All Detail Success';
 
 
-export const GetMovieDetail = createAction(
-  '[Movies Detail] Get Movies Detail'
+export const GetMovieAllDetail = createAction(
+  GET_MOVIE_ALL_DETAIL
 );
 
-export const GetMovieDetailSuccess = createAction(
-  GET_MOVIE_DETAIL_SUCCESS,
-  props<{movie: Movie}>()
-)
-
-export const GetMovieCredits = createAction(
-  GET_MOVIE_CREDITS,
-  props<{credits: Credits}>()
+export const GetMovieAllDetailSuccess = createAction(
+  GET_MOVIE_ALL_DETAIL_SUCCESS,
+  props<{append: AppendToResponseMovie}>()
 )
