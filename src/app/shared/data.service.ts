@@ -25,6 +25,8 @@ export class DataService{
 
   getData(url: any){
     return this.http.get<Movie | Serie | any>(`https://api.themoviedb.org/3${url}?api_key=${this.apiKey}&language=en-US'`)
+
+
   }
 
   getPopular(url: string){
