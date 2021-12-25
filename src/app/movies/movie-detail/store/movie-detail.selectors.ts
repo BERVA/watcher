@@ -9,3 +9,8 @@ export const getMovieAllDetail = createSelector(
   getMovieDetailState,
   (state: MovieDetailState) => state?.append
 )
+
+export const getMovieTrailer = createSelector(
+  getMovieDetailState,
+  (state: MovieDetailState) => state.trailer
+  )

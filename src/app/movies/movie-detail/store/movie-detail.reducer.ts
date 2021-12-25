@@ -1,20 +1,20 @@
 import { createReducer, on } from "@ngrx/store";
-import { Credits } from "src/app/series/serie.model";
-import { AppendToResponseMovie, Media } from "src/app/shared/shared.model";
-import { Movie } from "../../movie.model";
+import { AppendToResponseMovie } from "src/app/shared/shared.model";
 import * as MovieDetailAction from "./movie-detail.actions";
 
 export interface MovieDetailState{
-  movie: Movie,
-  credits: Credits,
-  media: Media,
-  append: AppendToResponseMovie
+  append: AppendToResponseMovie,
+  trailer: string,
+  error: String
 }
 const initialState: MovieDetailState = {
-  movie : {},
-  credits: {},
-  media: {},
-  append: {}
+  append: {
+    videos: {
+      results: []
+    }
+  },
+  trailer: null,
+  error: null
 }
 export const movieDetailReducer = createReducer(
   initialState,
@@ -23,6 +23,22 @@ export const movieDetailReducer = createReducer(
         return{
           ...state,
           append: action.append
+        }
+      }
+    ),
+    on(
+      MovieDetailAction.GetMovieTrailerSucess, (state, action) =>{
+        return {
+          ...state,
+          trailer: action.trailer
+        }
+      }
+    ),
+    on(
+      MovieDetailAction.OnMovieDetailError, (state, action) =>{
+        return {
+          ...state,
+          error: action.error
         }
       }
     )

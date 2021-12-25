@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AppendToResponseMovie, AppendToResponseSerie } from '../shared.model';
 
 @Component({
@@ -7,16 +8,14 @@ import { AppendToResponseMovie, AppendToResponseSerie } from '../shared.model';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
+  @Input() figure: AppendToResponseSerie | AppendToResponseMovie;
+  @Input() figureTrailerKey: string;
 
-  @Input() figure: AppendToResponseSerie| AppendToResponseMovie;
+  constructor() {
 
-
-
-
-  constructor() { }
+  }
 
   ngOnInit(): void {
-
 
 
   }

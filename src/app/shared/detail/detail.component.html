@@ -28,21 +28,24 @@
 
     <div class="detail--body--media">
       <div class="detail--body--media--backdrops">
-        <div class="detail--body--media--backdrops--backdrop" *ngFor="let backdrop of figure?.images?.backdrops | slice:1:3">
+        <div class="detail--body--media--backdrops--backdrop" *ngFor="let backdrop of figure?.images?.backdrops | slice:1:5">
           <img src="https://www.themoviedb.org/t/p/w276_and_h350_face/{{backdrop.file_path}}" alt="">
         </div>
       </div>
     </div>
 
-
-
-    <div class="detail--body--trailer">
-      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Pj0wz7zu3Ms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="detail--body--trailer" *ngIf="figureTrailerKey">
+      <iframe
+      width="100%"
+      height="100%"
+      [src]="( figureTrailerKey | safe)"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+      >
+      </iframe>
     </div>
 
-    <div class="detail--body--crew">
+    <div class="detail--body--crew" *ngIf="figure?.credits?.cast?.length">
       <h3 class="side--title">CAST</h3>
-
       <div class="detail--body--crew--cast">
           <div *ngFor="let cast of figure?.credits?.cast" class="detail--body--crew--cast--card">
             <div *ngIf="cast.profile_path">

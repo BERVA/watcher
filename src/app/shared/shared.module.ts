@@ -5,13 +5,15 @@ import { FigureComponent } from "./figure/figure.component";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 import { SummaryPipe } from "./pipes/summary.pipe";
 import { SwiperModule } from 'swiper/angular';
+import { SafePipe } from './pipes/safe.pipe';
 
 @NgModule({
   declarations: [
     DetailComponent,
     FigureComponent,
     LoadingSpinnerComponent,
-    SummaryPipe
+    SummaryPipe,
+    SafePipe
   ],
   imports:[
     CommonModule,

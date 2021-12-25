@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import {  Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import * as fromApp from '../../store/app.reducer'
 import * as fromMovieDetailSelectors from "./store/movie-detail.selectors";
 import { AppendToResponseMovie } from 'src/app/shared/shared.model';
+import * as MovieDetailActions from './store/movie-detail.actions';
 
 @Component({
   selector: 'app-movie-detail',
@@ -12,15 +13,36 @@ import { AppendToResponseMovie } from 'src/app/shared/shared.model';
 })
 export class MovieDetailComponent implements OnInit {
   movie$: Observable<AppendToResponseMovie>;
+  trailerKey$: Observable<string>;
+
 
   constructor(
     private store: Store<fromApp.AppState>
-  ) { }
+  ) {
+    this.store.dispatch(MovieDetailActions.GetMovieTrailer());
+  }
 
   ngOnInit(): void {
     this.movie$ = this.store.pipe(
       select(fromMovieDetailSelectors.getMovieAllDetail)
     )
+
+    this.trailerKey$ = this.store.pipe(
+      select(fromMovieDetailSelectors.getMovieTrailer),
+      map(
+        key => {
+          if(key){
+            return 'https://www.youtube.com/embed/' + key;
+          } else{
+            return null;
+          }
+        }
+      )
+    )
+
+
+
+
   }
 
 }

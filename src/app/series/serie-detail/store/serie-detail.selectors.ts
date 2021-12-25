@@ -9,3 +9,8 @@ export const getSerieAllDetail = createSelector(
   getSerieDetailState,
   (state: SerieDetailState) => state?.append
 )
+
+export const getSerieTrailer = createSelector(
+  getSerieDetailState,
+  (state: SerieDetailState) => state?.trailer
+)

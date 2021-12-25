@@ -3,10 +3,14 @@ import { AppendToResponseSerie } from "src/app/shared/shared.model";
 import * as SerieDetailAction from "./serie-detail.actions";
 
 export interface SerieDetailState{
-  append: AppendToResponseSerie
+  append: AppendToResponseSerie,
+  trailer: string,
+  error: string
 }
 const initialState: SerieDetailState = {
-  append: {}
+  append: {},
+  trailer: null,
+  error: null
 }
 export const serieDetailReducer = createReducer(
   initialState,
@@ -15,6 +19,22 @@ export const serieDetailReducer = createReducer(
       return {
         ...state,
         append: action.append
+      }
+    }
+  ),
+  on(
+    SerieDetailAction.GetSerieTrailerSucces, (state, action) => {
+      return{
+        ...state,
+        trailer: action.trailer
+      }
+    }
+  ),
+  on(
+    SerieDetailAction.OnSerieDetailError, (state, action) => {
+      return {
+        ...state,
+        error: action.error
       }
     }
   )

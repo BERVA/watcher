@@ -97,7 +97,7 @@ export interface AppendToResponseMovie{
     crew: Crew[]
   },
   videos?: {
-    results: video[]
+    results?: video[]
   }
   name?: string,
   release_date?: string,
