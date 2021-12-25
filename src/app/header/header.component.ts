@@ -15,12 +15,10 @@ import { AppState } from '../store/app.reducer';
 export class HeaderComponent implements OnInit {
   constructor(
     private navMenuService: NavigationMenuService,
-    private authService: AuthService,
     private store: Store<AppState>
   ) { }
 
     isOpen = this.navMenuService.isOpen;
-
     isAuthenticated$: Observable<boolean>;
     userMail$: Observable<string>;
 

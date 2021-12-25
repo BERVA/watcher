@@ -63,6 +63,16 @@ export class DataService{
     )
   }
 
+  onSearch(searchQuery: string){
+    return this.http.get(`https://api.themoviedb.org/3/search/multi?api_key=${this.apiKey}&query=${searchQuery}`).pipe(
+      map(
+        data => {
+          return data;
+        }
+      )
+    )
+  }
+
   addToList(){
 
   }
