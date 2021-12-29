@@ -8,7 +8,7 @@ this project will be built with;
 - TMDB Rest Api
 - Firebase Auth.
 
-## What visitor can do 
+## What visitor can do 
 
 Every visitor can;
 -Search Movie(s), Series, Cast
@@ -20,6 +20,6 @@ The visitor who sign in;
 - Can vote
 - Write a review
 
-## Storage
+## Storage
 User data will be stored in Firebase
 
