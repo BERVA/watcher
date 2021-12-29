@@ -14,7 +14,7 @@ export const getUser = createSelector(
 
 export const getUserMail = createSelector(
   getAuthState,
-  (state: AuthState) => state.user.email
+  (state: AuthState) => state.user?.email
 )
 
 export const getAuthenticated = createSelector(
