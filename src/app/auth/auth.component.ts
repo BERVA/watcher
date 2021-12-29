@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AppState } from '../store/app.reducer';
 import { AuthResponseData, AuthService } from './auth.service';
 import { LoginStart, SignInStart } from './store/auth.actions';
@@ -16,14 +16,23 @@ export class AuthComponent implements OnInit {
 
   isLoginMode: boolean = true;
   error: string = '';
+  private storeSub = Subscription;
 
   constructor(
-    private authService: AuthService,
-    private router: Router,
     private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
+
+    this.store.select('auth').subscribe(
+      authState => {
+        this.error = authState.authError;
+        if(this.error){
+          this.error = authState.authError
+        }
+      }
+    )
+
   }
 
   onSwitchMode(){

@@ -38,6 +38,12 @@ export const authReducer = createReducer(
       user: null,
       isAuthenticated: false
     }
+  }),
+  on(AuthActions.AuthenticateFail, (state, action) => {
+    return{
+      ...state,
+      authError: action.errorMessage
+    }
   })
 
 )

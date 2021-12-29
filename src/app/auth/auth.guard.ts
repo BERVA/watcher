@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { Observable } from "rxjs";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { map, Observable, take } from "rxjs";
+import { AppState } from "../store/app.reducer";
 import { AuthService } from "./auth.service";
 
 @Injectable({
@@ -9,13 +11,31 @@ import { AuthService } from "./auth.service";
 export class AuthGuard implements CanActivate{
 
   constructor(
-    private authService: AuthService
+    private router: Router,
+    private store: Store<AppState>
   ){}
 
 
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    throw new Error("Method not implemented.");
+
+    return this.store.select('auth').pipe(
+      take(1),
+      map( authState => {
+        return authState.user
+      }),
+      map( user => {
+        const isAuth = !!user;
+
+        if(isAuth){
+          return true;
+        } else {
+          return this.router.createUrlTree(['/auth'])
+        }
+      })
+    )
+
+
   }
 
 }

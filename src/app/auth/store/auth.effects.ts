@@ -1,17 +1,49 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { exhaustMap, map, tap } from "rxjs";
+import { catchError, exhaustMap, map, of, tap } from "rxjs";
 import { Anahtar } from "src/app/shared/keys";
 import { AuthResponseData, AuthService } from "../auth.service";
 import { User } from "../user.model";
 import * as fromAuthActions from "./auth.actions";
+
 const handleAuthentication = (email: string, userId: string, idToken:string, expiresIn: number) => {
   const expirationDate = new Date( new Date().getTime() + (+expiresIn * 1000));
   const authenticatedUser = new User(email,userId,idToken,expirationDate)
   localStorage.setItem('userData', JSON.stringify(authenticatedUser))
   return fromAuthActions.AuthenticateSuccess({ user: authenticatedUser});
+}
+const handleError = (errorRes: HttpErrorResponse) => {
+  let errorMessage = "An error occured!";
+  if(!errorRes.error || !errorRes.error.error){
+    return of(fromAuthActions.AuthenticateFail({errorMessage: errorMessage}));
+  } else {
+    switch (errorRes.error.error.message){
+      case 'EMAIL_EXISTS':
+        errorMessage= 'The email address is already in use by another account.';
+        break;
+      case 'OPERATION_NOT_ALLOWED':
+        errorMessage = 'Password sign-in is disabled for this project.';
+        break;
+      case 'TOO_MANY_ATTEMPTS_TRY_LATER':
+        errorMessage = 'We have blocked all requests from this device due to unusual activity. Try again later.';
+        break;
+      case 'EMAIL_NOT_FOUND':
+        errorMessage = 'User not found';
+        break;
+      case 'INVALID_PASSWORD':
+        errorMessage = 'The password is invalid';
+        break;
+      case 'USER_DISABLED':
+        errorMessage = 'The user account has been disabled.';
+        break;
+      default:
+        errorMessage = 'An unknown error occurred!';
+        break;
+    }
+    return of(fromAuthActions.AuthenticateFail({errorMessage: errorMessage}))
+  }
 }
 @Injectable()
 export class AuthEffects{
@@ -43,7 +75,10 @@ export class AuthEffects{
             data => {
               return handleAuthentication(data.email, data.localId, data.idToken, +data.expiresIn);
             }
-          )
+          ),
+          catchError( (err: HttpErrorResponse) => {
+           return handleError(err)
+          })
         )
       })
     )
@@ -69,7 +104,10 @@ export class AuthEffects{
             data => {
               return handleAuthentication(data.email, data.localId, data.idToken, +data.expiresIn);
             }
-          )
+          ),
+          catchError( (err: HttpErrorResponse) => {
+            return handleError(err)
+           })
         )
 
       })
