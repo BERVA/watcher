@@ -4,7 +4,6 @@ import { DetailComponent } from "./detail/detail.component";
 import { FigureComponent } from "./figure/figure.component";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 import { SummaryPipe } from "./pipes/summary.pipe";
-import { SwiperModule } from 'swiper/angular';
 import { SafePipe } from './pipes/safe.pipe';
 
 @NgModule({
@@ -16,8 +15,7 @@ import { SafePipe } from './pipes/safe.pipe';
     SafePipe
   ],
   imports:[
-    CommonModule,
-    SwiperModule
+    CommonModule
   ],
 
   exports: [

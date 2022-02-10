@@ -27,6 +27,10 @@ import { PersonDetailComponent } from './people/person-detail/person-detail.comp
 import { PeopleListComponent } from './people/people-list/people-list.component';
 import { PeopleEffects } from './people/store/people.effects';
 import { PersonDetailEffects } from './people/person-detail/store/person-detail.effects';
+import { AngularFireModule} from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+import { WatchListEffects } from './watchlist/store/watchlist.effects';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,7 @@ import { PersonDetailEffects } from './people/person-detail/store/person-detail.
     PersonComponent,
     PersonDetailComponent,
     PeopleListComponent,
+    WatchlistComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,11 +52,13 @@ import { PersonDetailEffects } from './people/person-detail/store/person-detail.
     SeriesModule,
     SharedModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([MoviesEffects, MovieDetailEffects, SeriesEffects, SerieDetailEffects, AuthEffects, PeopleEffects, PersonDetailEffects]),
+    EffectsModule.forRoot([MoviesEffects, MovieDetailEffects, SeriesEffects, SerieDetailEffects, AuthEffects, PeopleEffects, PersonDetailEffects, WatchListEffects]),
     StoreRouterConnectingModule.forRoot({
       serializer: CustomSerializer
     }),
-    StoreDevtoolsModule.instrument({logOnly: environment.production})
+    StoreDevtoolsModule.instrument({logOnly: environment.production}),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

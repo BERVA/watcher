@@ -10,6 +10,7 @@ import * as fromSerieDetail from '../series/serie-detail/store/serie-detail.redu
 import * as fromAuth from '../auth/store/auth.reducer';
 import * as fromPeople from "../people/store/people.reducer";
 import * as fromPersonDetail from "../people/person-detail/store/person-detail.reducer";
+import * as fromWatchList from "../watchlist/store/watchlist.reducers";
 import { SHARED_STATE_NAME } from './shared/shared.selector';
 import { SharedState } from './shared/shared.state';
 import { SharedReducer } from './shared/shared.reducer';
@@ -23,6 +24,7 @@ export interface AppState{
   people: fromPeople.PeopleState,
   person: fromPersonDetail.PersonDetailState,
   auth: fromAuth.AuthState;
+  watchList: fromWatchList.WatchListState;
   [SHARED_STATE_NAME]: SharedState;
 
 }
@@ -36,6 +38,7 @@ export const appReducer: ActionReducerMap<AppState, any> = {
   people: fromPeople.peopleReducer,
   person: fromPersonDetail.personDetailReducer,
   auth: fromAuth.authReducer,
+  watchList: fromWatchList.watchListReducer,
   [SHARED_STATE_NAME]: SharedReducer
 }
 

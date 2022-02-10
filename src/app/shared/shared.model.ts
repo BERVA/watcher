@@ -138,3 +138,13 @@ export interface AppendToResponseSerie{
   first_air_date?: string,
   last_air_date?: string,
 }
+
+
+//
+export interface watchListe{
+  movieIds: [],
+  serieIds: []
+}
+
+
+

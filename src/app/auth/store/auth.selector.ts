@@ -11,6 +11,11 @@ export const getUser = createSelector(
   (state: AuthState) => state.user
 )
 
+export const getUserId = createSelector(
+  getAuthState,
+  (state: AuthState) => state.user?.id
+)
+
 
 export const getUserMail = createSelector(
   getAuthState,

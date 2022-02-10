@@ -27,7 +27,16 @@
     </div>
     <div class="logo"><a routerLink="/" routerLinkActive="router-link-active">Watcher</a></div>
     <ul class="top--nav--list">
-      <li *ngIf="(isAuthenticated$ | async)"><a routerLink="/profile"class="btn outline">{{ userMail$ | async}}</a></li>
+      <li *ngIf="(isAuthenticated$ | async)">
+        <a routerLink="/profile"class="btn outline">
+          <i class="fas fa-user"></i>
+        </a>
+      </li>
+      <li *ngIf="(isAuthenticated$ | async)">
+        <a routerLink="/watchlist"class="btn outline">
+          <i class="fas fa-film"></i>
+        </a>
+      </li>
       <li *ngIf="(isAuthenticated$ | async)"><a routerLink="/auth" class="btn" (click)="onLogout()"> Logout</a></li>
       <li *ngIf="(!(isAuthenticated$ | async))"><a routerLink="/auth" class="btn">Sign In</a></li>
     </ul>

@@ -5,6 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { PeopleComponent } from './people/people.component';
 import { PersonDetailComponent } from './people/person-detail/person-detail.component';
 import { ProfileComponent } from './profile/profile.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
 
 const routes: Routes = [
   {path: 'auth', component: AuthComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   canActivate: [AuthGuard]
 },
   {path: 'person', component: PeopleComponent},
-  {path: 'person/:id', component: PersonDetailComponent}
+  {path: 'person/:id', component: PersonDetailComponent},
+  {path: 'watchlist', component: WatchlistComponent}
 ];
 
 @NgModule({

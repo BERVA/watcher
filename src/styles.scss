@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import  '~swiper/scss';
-@import './node_modules/swiper/modules/navigation/navigation.scss';
+
 
 :root{
   --black: #020203;
@@ -57,6 +56,8 @@ h1{
   color: $yellow;
   font-size: 3rem;
 }
+
+.fas{ font-size: 1.7rem}
 
 
 header{
@@ -403,8 +404,6 @@ header.main--header.open{
     font-weight: 400;
   }
 }
-
-
 .swiper-button-prev,
 .swiper-button-next{
   color: #fff;
