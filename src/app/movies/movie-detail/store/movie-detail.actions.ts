@@ -6,6 +6,7 @@ export const GET_MOVIE_ALL_DETAIL_SUCCESS = '[Movies Detail] Get Movie All Detai
 export const GET_MOVIE_TRAILER = '[Movies Detail] Get Movie Trailer';
 export const GET_MOVIE_TRAILER_SUCCESS = '[Movies Detail] Get Movie Trailer Success';
 export const ON_MOVIE_DETAIL_ERROR = '[Movies Detail] On Error';
+export const ON_CLEAR_MOVIE_DETAIL_ = '[Movies Detail] On Clear';
 
 
 export const GetMovieAllDetail = createAction(
@@ -14,7 +15,7 @@ export const GetMovieAllDetail = createAction(
 
 export const GetMovieAllDetailSuccess = createAction(
   GET_MOVIE_ALL_DETAIL_SUCCESS,
-  props<{append: AppendToResponseMovie}>()
+  props<{ append: AppendToResponseMovie }>()
 )
 
 export const GetMovieTrailer = createAction(
@@ -23,10 +24,21 @@ export const GetMovieTrailer = createAction(
 
 export const GetMovieTrailerSucess = createAction(
   GET_MOVIE_TRAILER_SUCCESS,
-  props<{trailer: string}>()
+  props<{ trailer: string }>()
 )
 
 export const OnMovieDetailError = createAction(
   ON_MOVIE_DETAIL_ERROR,
-  props<{error: String}>()
+  props<{ error: String }>()
+)
+
+export const OnClearMovieDetailState = createAction(
+  ON_CLEAR_MOVIE_DETAIL_,
+  props<{
+    append: {
+      videos: {
+        results: []
+      }
+    }
+  }>()
 )

@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import {MovieDetailState} from "./movie-detail.reducer";
+import { MovieDetailState } from "./movie-detail.reducer";
 
 const getMovieDetailState = createFeatureSelector<MovieDetailState>(
   "movie"
@@ -13,4 +13,9 @@ export const getMovieAllDetail = createSelector(
 export const getMovieTrailer = createSelector(
   getMovieDetailState,
   (state: MovieDetailState) => state.trailer
-  )
+)
+
+export const clearMovieDetail = createSelector(
+  getMovieDetailState,
+  (state: MovieDetailState) => state?.append
+)

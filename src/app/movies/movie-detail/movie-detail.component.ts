@@ -20,28 +20,25 @@ export class MovieDetailComponent implements OnInit {
     private store: Store<fromApp.AppState>
   ) {
     this.store.dispatch(MovieDetailActions.GetMovieTrailer());
-  }
-
-  ngOnInit(): void {
     this.movie$ = this.store.pipe(
       select(fromMovieDetailSelectors.getMovieAllDetail)
     )
-
     this.trailerKey$ = this.store.pipe(
       select(fromMovieDetailSelectors.getMovieTrailer),
       map(
         key => {
-          if(key){
+          if (key) {
             return 'https://www.youtube.com/embed/' + key;
-          } else{
+          } else {
             return null;
           }
         }
       )
     )
 
+  }
 
-
+  ngOnInit(): void {
 
   }
 

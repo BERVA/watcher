@@ -6,6 +6,7 @@ export const GET_SERIE_ALL_DETAIL_SUCCESS = '[Serie Detail] Get Serie All Detail
 export const GET_SERIE_TRAILER = '[Serie Detail] Get Serie Trailer';
 export const GET_SERIE_TRAILER_SUCCESS = '[Serie Detail] Get MoSerievie Trailer Success';
 export const ON_SERIE_DETAIL_ERROR = '[Serie Detail] On Serie Error';
+export const ON_SERIE_DETAIL_CLEAR = '[Serie Detail] On Serie Clear';
 
 
 export const GetSerieAllDetail = createAction(
@@ -29,4 +30,8 @@ export const GetSerieTrailerSucces = createAction(
 export const OnSerieDetailError = createAction(
   ON_SERIE_DETAIL_ERROR,
   props<{error: string}>()
+)
+export const OnSerieDetailClear = createAction(
+  ON_SERIE_DETAIL_CLEAR,
+  props<{ append: {}}>()
 )

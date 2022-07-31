@@ -37,5 +37,13 @@ export const serieDetailReducer = createReducer(
         error: action.error
       }
     }
+  ),
+  on(
+    SerieDetailAction.OnSerieDetailClear, (state, action) => {
+      return {
+        ...state,
+        append: action.append
+      }
+    }
   )
 );

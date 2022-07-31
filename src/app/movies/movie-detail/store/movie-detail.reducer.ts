@@ -41,5 +41,13 @@ export const movieDetailReducer = createReducer(
           error: action.error
         }
       }
+    ),
+    on(
+      MovieDetailAction.OnClearMovieDetailState, (state, action) => {
+        return {
+          ...state,
+          append: action.append
+        }
+      }
     )
 );

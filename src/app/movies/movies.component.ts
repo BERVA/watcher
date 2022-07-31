@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
+import * as fromApp from '../store/app.reducer'
+import * as MovieDetailActions from './movie-detail/store/movie-detail.actions'
+import * as SerieDetailActions from './../series/serie-detail/store/serie-detail.actions'
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private store: Store<fromApp.AppState>
+  ) {
+    this.store.dispatch(MovieDetailActions.OnClearMovieDetailState({
+      append: {
+        videos: {
+          results: []
+        }
+      }
+    }))
 
-  ngOnInit(): void {
+    this.store.dispatch(SerieDetailActions.OnSerieDetailClear({ append: {}}))
+  }
+  ngOnInit() {
   }
 
 }

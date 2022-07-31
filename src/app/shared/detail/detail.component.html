@@ -1,6 +1,7 @@
 <div class="detail">
-  <div class="detail--header" style="background-image: url(https://image.tmdb.org/t/p/original{{figure.backdrop_path}});">
-  <div class="detail--header--overlay"></div>
+  <div class="detail--header"
+    style="background-image: url(https://image.tmdb.org/t/p/original{{figure.backdrop_path}});">
+    <div class="detail--header--overlay"></div>
   </div>
 
   <div class="detail--body">
@@ -13,7 +14,8 @@
 
       </h3>
       <h4>
-        {{figure.release_date ? figure.release_date : figure.first_air_date}} {{figure.last_air_date ? '-'+figure.last_air_date : ''}}
+        {{figure.release_date ? figure.release_date : +figure.first_air_date | date: 'mediumDate' }}
+        {{figure.last_air_date | date:'mediumDate' ?'-' +figure.last_air_date  : '' | date: 'mediumDate'}}
       </h4>
       <div class="detail--body--info--genres">
         <span *ngFor="let genre of figure.genres"> {{ genre.name }} </span>
@@ -28,35 +30,33 @@
 
     <div class="detail--body--media">
       <div class="detail--body--media--backdrops">
-        <div class="detail--body--media--backdrops--backdrop" *ngFor="let backdrop of figure?.images?.backdrops | slice:1:5">
+        <div class="detail--body--media--backdrops--backdrop"
+          *ngFor="let backdrop of figure?.images?.backdrops | slice:1:5">
           <img src="https://www.themoviedb.org/t/p/w276_and_h350_face/{{backdrop.file_path}}" alt="">
         </div>
       </div>
     </div>
 
     <div class="detail--body--trailer" *ngIf="figureTrailerKey">
-      <iframe
-      width="100%"
-      height="100%"
-      [src]="( figureTrailerKey | safe)"
-      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-      >
+      <iframe width="100%" height="100%" [src]="( figureTrailerKey | safe)" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
       </iframe>
     </div>
 
     <div class="detail--body--crew" *ngIf="figure?.credits?.cast?.length">
       <h3 class="side--title">CAST</h3>
       <div class="detail--body--crew--cast">
-          <div *ngFor="let cast of figure?.credits?.cast" class="detail--body--crew--cast--card">
-            <div *ngIf="cast.profile_path">
-              <img src="https://www.themoviedb.org/t/p/w276_and_h350_face/{{cast.profile_path}}" alt="">
-            </div>
-            <div *ngIf="!cast.profile_path">
-              <img src="/assets/img/default-avatar.png" alt="">
-            </div>
-            <h4>{{cast.name}}</h4>
-            <h5>{{cast.character}}</h5>
+        <div *ngFor="let cast of figure?.credits?.cast" class="detail--body--crew--cast--card">
+          <div *ngIf="cast.profile_path">
+            <img src="https://www.themoviedb.org/t/p/w276_and_h350_face/{{cast.profile_path}}" alt="">
           </div>
+          <div *ngIf="!cast.profile_path">
+            <img src="/assets/img/default-avatar.png" alt="">
+          </div>
+          <h4>{{cast.name}}</h4>
+          <h5>{{cast.character}}</h5>
+        </div>
       </div>
     </div>
   </div>

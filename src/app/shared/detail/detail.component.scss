@@ -9,9 +9,16 @@
 
   &--header{
     grid-area: Header;
-    height: 400px;
+    height: 500px;
     background-size: cover;
     background-position: top center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
 
     &--overlay{
       width: 100%;
@@ -24,6 +31,9 @@
       justify-content: flex-end;
       gap: 2rem;
       padding-bottom: 20px;
+    }
+    img{
+      object-fit: fill;
     }
 
   }
@@ -44,6 +54,7 @@
     "Trailer Trailer Trailer Media Media"
     "Trailer Trailer Trailer Media Media"
     "Crew Crew Crew Crew Crew";
+    z-index: 2;
 
     &--poster{
       grid-area: Poster;
